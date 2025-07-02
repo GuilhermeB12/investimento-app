@@ -1,18 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Calculadora de Investimentos</title>
+        <link rel="stylesheet" href="styles.css">
     </head>
 
     <body>
-        <h1>Bem-vindo à Calculadora de Investimentos</h1>
-        <p>Escolha uma opção de investimento:</p>
-        <ul>
-            <li><a href="#cdb">CDB</a></li>
-            <li><a href="#lci">LCI</a></li>
-            <li><a href="#lca">LCA</a></li>
-        </ul>
+        <div class="container">
+            <header>
+                <h1>💰 Calculadora de Investimentos</h1>
+                <p>Compare CDB, LCA e LCI</p>
+            </header>
+
+            <main>
+                <form id="investimentoForm" class="form-container">
+                    <div class="form-group">
+                        <label for="escolha">Tipo de Investimento:</label>
+                        <select id="escolha" name="escolha" required>
+                            <option value="">Selecione...</option>
+                            <option value="CDB">CDB</option>
+                            <option value="LCA">LCA</option>
+                            <option value="LCI">LCI</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipo">Tipo de Rendimento:</label>
+                        <select id="tipo" name="tipo" required>
+                            <option value="">Selecione...</option>
+                            <option value="pre">Pré-fixado</option>
+                            <option value="pos">Pós-fixado</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="valor">Valor Inicial (R$):</label>
+                        <input type="number" id="valor" name="valor" step="0.01" min="0" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taxa">Taxa (% do CDI ou % ao ano):</label>
+                        <input type="number" id="taxa" name="taxa" step="0.01" min="0" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prazo">Prazo (dias):</label>
+                        <input type="number" id="prazo" name="prazo" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cdi">CDI (% ao ano):</label>
+                        <input type="number" id="cdi" name="cdi" step="0.01" min="0" required>
+                    </div>
+
+                    <button type="submit" class="btn-calcular">Calcular</button>
+                </form>
+
+                <div id="resultado" class="resultado-container" style="display: none;">
+                    <h2>Resultado</h2>
+                    <div class="resultado-card">
+                        <div class="resultado-item">
+                            <span class="label">Ganho Nominal:</span>
+                            <span class="valor" id="ganhoNominal">R$ 0,00</span>
+                        </div>
+                        <div class="resultado-item">
+                            <span class="label">Valor Final:</span>
+                            <span class="valor" id="valorFinal">R$ 0,00</span>
+                        </div>
+                        <div class="resultado-item" id="irContainer" style="display: none;">
+                            <span class="label">IR Pago:</span>
+                            <span class="valor" id="irPago">R$ 0,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="erro" class="erro-container" style="display: none;">
+                    <p id="mensagemErro"></p>
+                </div>
+            </main>
+        </div>
+
+        <script src="script.js"></script>
     </body>
 
 </html>
